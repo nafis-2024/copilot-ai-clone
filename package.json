@@ -1,0 +1,69 @@
+{
+  "name": "ai-coding-assistant",
+  "displayName": "AI Coding Assistant",
+  "description": "Local-first AI companion for VS Code with no-account mode and optional provider integration",
+  "version": "0.1.0",
+  "publisher": "nafis-2024",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "activationEvents": [
+    "onView:aiAssistantSidebar",
+    "onCommand:aiAssistant.openSidebar",
+    "onCommand:aiAssistant.askQuestion",
+    "onCommand:aiAssistant.clearHistory"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiAssistant.openSidebar",
+        "title": "AI Coding Assistant: Open Sidebar"
+      },
+      {
+        "command": "aiAssistant.askQuestion",
+        "title": "AI Coding Assistant: Ask Question"
+      },
+      {
+        "command": "aiAssistant.clearHistory",
+        "title": "AI Coding Assistant: Clear History"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "aiAssistant",
+          "title": "AI Assistant",
+          "icon": "$(sparkle)"
+        }
+      ]
+    },
+    "views": {
+      "aiAssistant": [
+        {
+          "type": "aiAssistantSidebar",
+          "id": "aiAssistantSidebar",
+          "name": "Chat",
+          "icon": "$(sparkle)"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.5"
+  },
+  "license": "MIT"
+}
